@@ -69,6 +69,9 @@ export default {
     },
     submitOrder () {
       Toast.create('Order submitted')
+      setTimeout(() => {
+        window.location.replace('/')
+      } ,2000);
     }
   }
 }

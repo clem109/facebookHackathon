@@ -1,4 +1,4 @@
-Category Icon Path,Category,English Title,Chinese Title,Price large,Price Small,Image Path
+Category Icon Path,Category,titleEnglish,titleChinese,priceLarge,priceSmall,Image Path
 ./img/icons/tea_with_milk.png,Tea with Milk,Mousse Milk tea,慕斯奶茶,13,10,
 ./img/icons/tea_with_milk.png,Tea with Milk,Ceylon milk tea,红豆锡兰奶茶,13,10,
 ./img/icons/tea_with_milk.png,Tea with Milk,Matcha milk tea,抹香慕斯奶茶,14,11,
