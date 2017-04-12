@@ -35,8 +35,8 @@
    </q-modal>
    <q-modal ref="waiterModal">
      <div style="padding: 50px">
-       <h4>Waiter has been called</h4>
-       <p>Please be patient and signal the waiter so that they can be of service.</p>
+       <h4>Waiter hasn't been called</h4>
+       <p>Don't be so lazy! Get up and go yourself and burn off some extra calories.</p>
        <br>
        <button class="primary" @click="$refs.waiterModal.close()">Close</button>
      </div>
