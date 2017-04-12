@@ -10,12 +10,12 @@
   </div>
 
   <div class="list">
-    <item-card v-for="(item, index) in items" :card-title="item.title" :card-image="item.imageUrl" :price="item.price" :number="item.quantity" :id="index" v-on:increment="changeAmount">
+    <item-card v-for="(item, index) in items" :card-title="item.title" :price="item.price" :number="item.quantity" :id="index" v-on:increment="changeBasket">
     </item-card>
   </div>
   <button
   class="primary circular absolute-bottom-right"
-  @click="checkout()"
+  @click="$refs.basketModal.open()"
   style="right: 18px; bottom: 18px"
 >
 <i>local_grocery_store</i>
@@ -28,6 +28,8 @@
       {{item.quantity }} X {{item.title}} <br>price: {{ item.price * item.quantity }}元<br>
       <hr>
     </div>
+    Total: {{ total }}元
+    <br>
     <br>
     <button class="red" @click="$refs.basketModal.close()">Close</button>
     <button class="primary" @click="submitOrder">Checkout</button>
@@ -41,69 +43,18 @@
 <script>
 import ItemCard from './ItemCard.vue'
 import { Toast } from 'quasar'
-import bus from 'bus.js'
 
 export default {
 
-  data() {
-    return {
-      items: [{
-          title: 'Mousse Milk tea 慕斯奶茶',
-          price: '13',
-          imageUrl: '/statics/tea_with_milk.png',
-          quantity: 0
-        },
-        {
-          title: 'Ceylon milk tea 红豆锡兰奶茶',
-          price: '13',
-          imageUrl: '/statics/tea_with_milk.png',
-          quantity: 0
-        },
-        {
-          title: 'Matcha milk tea 抹香慕斯奶茶',
-          price: '14',
-          imageUrl: '/statics/tea_with_milk.png',
-          quantity: 0
-        },
-        {
-          title: 'chocolate milk tea 黑巧慕斯奶茶',
-          price: '14',
-          imageUrl: '/statics/tea_with_milk.png',
-          quantity: 0
-        },
-        {
-          title: 'matcha milk 特浓抹茶牛奶',
-          price: '13',
-          imageUrl: '/statics/tea_with_milk.png',
-          quantity: 0
-        },
-        {
-          title: 'Matcha milk with mango 芒果抹茶牛奶',
-          price: '14',
-          imageUrl: '/statics/tea_with_milk.png',
-          quantity: 0
-        },
-        {
-          title: 'Hot chocolate 厨师巧克力',
-          price: '13',
-          imageUrl: '/statics/tea_with_milk.png',
-          quantity: 0
-        },
-        {
-          title: 'Choco with cookies 曲奇奶香巧克力',
-          price: '13',
-          imageUrl: '/statics/tea_with_milk.png',
-          quantity: 0
-        },
-        {
-          title: 'honey choco beans 蜜汁红豆巧克力',
-          price: '13',
-          imageUrl: '/statics/tea_with_milk.png',
-          quantity: 0
-        }
-      ],
-      total: 0,
-      basket: []
+  computed: {
+    items () {
+      return this.$store.getters.shoppingItems
+    },
+    basket () {
+      return this.$store.getters.basketItems
+    },
+    total () {
+      return this.$store.getters.basketTotal
     }
   },
 
@@ -112,38 +63,11 @@ export default {
   },
 
   methods: {
-    changeAmount(items) {
-      // If no items in the basket add it to the basket
-      if (this.basket.length === 0) {
-        this.basket.push(items)
-        bus.$emit('button')
-      }
-      // check for duplicates and update the quantity otherwise add new item
-      else {
-        for (var i = 0; i < this.basket.length; i++) {
-          if (this.basket[i].id === items.id) {
-            if (this.basket[i].quantity > items.quantity) {
-              this.basket[i].quantity = items.quantity
-              return
-            }
-            else {
-              this.basket[i].quantity = items.quantity
-              return
-            }
-          }
-        }
-        this.basket.push(items)
-      }
+    changeBasket (item) {
+      var payload = [item.id, item.quantity]
+      this.$store.commit('changeBasket', payload)
     },
-    checkout() {
-      this.$refs.basketModal.open()
-      var basketArray = []
-      for (var item of this.basket) {
-        console.log(item.title)
-        basketArray.push('' + item.title + item.price + item.quantity + "" )
-      }
-    },
-    submitOrder() {
+    submitOrder () {
       Toast.create('Order submitted')
     }
   }

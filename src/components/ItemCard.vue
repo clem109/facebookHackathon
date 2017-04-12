@@ -4,8 +4,6 @@
     <div style="padding: 10px; width: 100%">
     <div class="card">
           <div class="card-title">
-            <img class="avatar" :src='cardImage' >
-
             <p>{{ cardTitle }}</p>
           </div>
 
