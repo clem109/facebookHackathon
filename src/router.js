@@ -24,7 +24,6 @@ export default new VueRouter({
   routes: [
     { path: '/', component: load('Index') }, // Default
     { path: '/order', component: load('ItemList') }, // Not found
-    { path: '/checkout', component: load('Checkout') }, // Not found
     { path: '*', component: load('Error404') } // Not found
   ]
 })
