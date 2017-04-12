@@ -1,6 +1,6 @@
 # Ordering App
 
-> This is a project for the Facebook Hackathon at Tsinghua
+> This is a project for the Facebook Hackathon at Tsinghua, this application is designed for a mobile app so on desktop it may look freaky
 
 ## Build Setup
 
