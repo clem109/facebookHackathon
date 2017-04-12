@@ -1,6 +1,6 @@
-# Quasar App
+# Ordering App
 
-> A Quasar project
+> This is a project for the Facebook Hackathon at Tsinghua
 
 ## Build Setup
 
