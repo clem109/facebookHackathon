@@ -8,7 +8,7 @@
       <i>menu</i>
     </button>
       <q-toolbar-title :padding="2">
-        Time Capsule
+        Morpheus App
       </q-toolbar-title>
     </div>
 
