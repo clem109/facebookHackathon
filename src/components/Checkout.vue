@@ -3,10 +3,10 @@
 
   <div class="card">
   <div class="card-title">
-    Thank you for ordering!
+    Put your arm up in the air!
   </div>
   <div class="card-content">
-    This application is in beta, for now we will bring your order over to you and you can pay via WeChat/Alipay or if you need to pay by cash or card please make your way to the counter showing this screen with your order.
+    A member of our team will come and get the order from you, this application is in beta for now. In the future you will just be able to order and the drinks/food will come straight to you ;)
   </div>
 </div>
 
@@ -41,9 +41,7 @@
 <script>
 import axios from 'axios'
 
-
 export default {
-
   computed: {
     items () {
       return this.$store.getters.shoppingItems
