@@ -3,7 +3,7 @@
     <router-link to="/order">
     <button>Click Me</button>
     <p> TODO: Add in a homescreen page
-    {{ hello }}</p>
+    here: {{ hello }}</p>
   </router-link>
 </div>
 </template>
@@ -25,9 +25,9 @@ export default {
   },
   apollo: {
   // Simple query that will update the 'hello' vue property
-  hello: gql`{
-    id
-  }`,
+    hello: gql`{
+      hello
+    }`
   },
   methods: {
 
